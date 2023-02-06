@@ -16,7 +16,12 @@ pipeline {
                 sh './jenkins/scripts/test.sh' 
             }
         }
-         stage('Deploy') { 
+        stage('Manual Approval') {
+            steps {
+                input message: 'Lanjutkan ke tahap Deploy?' 
+            }
+        }
+        stage('Deploy') { 
             steps {
                 sh './jenkins/scripts/deliver.sh' 
                 sleep time: 1, unit: 'MINUTES'
