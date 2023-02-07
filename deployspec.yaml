@@ -6,4 +6,3 @@ phases:
     commands:      
       - npm install
       - npm run build
-      - aws s3 sync --acl public-read build s3://ci-cd-final-project-neithroid/react-app-build
