@@ -5,6 +5,10 @@ files:
     destination: /var/www/html/
 file_exists_behavior: OVERWRITE
 hooks:
+  BeforeInstall:
+    - location: scripts/cleanup
+      timeout: 300
+      runas: root
   AfterInstall:
     - location: scripts/install_dependencies
       timeout: 300
