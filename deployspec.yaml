@@ -1,15 +1,11 @@
 version: 0.2
   
   
-phases:
-  install:
-    commands:
-      - pyenv install -s 3.7.13
-      - pyenv global 3.7.13
-  
-  
+phases: 
   build:
-    commands:
+    commands:      
+      - sam build
+      - sam deploy --no-fail-on-empty-changeset
       - npm install
       - npm run build
-      - aws s3 sync --acl public-read build s3://ci-cd-final-project-neithroid/
+      - aws s3 sync --acl public-read build s3://ci-cd-final-project-neithroid/react-app-build
